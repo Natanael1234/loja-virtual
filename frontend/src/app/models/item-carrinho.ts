@@ -2,28 +2,19 @@ import { Produto } from './produto';
 
 export class ItemCarrinho {
 
-  id:string;
+  quantidadeEstoque:number = 0;
   quantidade:number = 0;
-  produtoId:string;
   precoTotal:number = 0;
   produto: Produto;
 
-  constructor(dadosItem?: any) {
-    if (dadosItem) {
-      this.setDados(dadosItem)
-    }
-  }
-
-  setDados (dadosItem?:any) {
-    this.id = dadosItem.id;
-    this.quantidade = Math.max(0, dadosItem.quantidade || 0);
-    this.produtoId = dadosItem.produtoId;
-    this.produto = dadosItem.produto ? new Produto(dadosItem.produto) : null;
+  constructor(produto: Produto, quantidade:number) {
+    if (!produto) throw new Error("Produto indefinido.");
+    this.quantidade = Math.min(Math.max(0, quantidade || 0), this.quantidadeEstoque);
     this.calcularPrecoTotal();
   }
 
   mudaQuantidade (diferenca:number) {
-    this.quantidade = Math.max(0, this.quantidade + diferenca);
+    this.quantidade = Math.min(Math.max(0, this.quantidade + diferenca), this.quantidadeEstoque);
     this.calcularPrecoTotal();
   }
 
