@@ -3,9 +3,9 @@ import { Produto } from './produto';
 export class ItemCarrinho {
 
   id:string;
-  quantidade:number;
+  quantidade:number = 0;
   produtoId:string;
-  precoTotal:number;
+  precoTotal:number = 0;
   produto: Produto;
 
   constructor(dadosItem?: any) {
@@ -16,10 +16,19 @@ export class ItemCarrinho {
 
   setDados (dadosItem?:any) {
     this.id = dadosItem.id;
-    this.quantidade = dadosItem.quantidade;
+    this.quantidade = Math.max(0, dadosItem.quantidade || 0);
     this.produtoId = dadosItem.produtoId;
     this.produto = dadosItem.produto ? new Produto(dadosItem.produto) : null;
-    this.precoTotal = dadosItem.precoTotal;
+    this.calcularPrecoTotal();
+  }
+
+  mudaQuantidade (diferenca:number) {
+    this.quantidade = Math.max(0, this.quantidade + diferenca);
+    this.calcularPrecoTotal();
+  }
+
+  calcularPrecoTotal () {
+    this.precoTotal = (this.quantidade||0) * (this.produto ? this.produto.preco : 0);
   }
 
 }

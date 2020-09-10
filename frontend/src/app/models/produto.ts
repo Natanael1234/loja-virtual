@@ -3,7 +3,7 @@ export class Produto {
   id: string;
   nome: string;
   thumbnail: string;
-  preco: number;
+  preco: number = 0;
   imagensUrls: string[];
 
   constructor(dadosProduto?: any) {
@@ -16,7 +16,7 @@ export class Produto {
     this.id = dadosProduto.id;
     this.nome = dadosProduto.nome;
     this.thumbnail = dadosProduto.thumbnail;
-    this.preco = dadosProduto.preco;
+    this.preco = dadosProduto.preco || 0;
     this.imagensUrls = dadosProduto.imagensUrls;
   }
 
