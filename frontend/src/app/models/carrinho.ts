@@ -21,4 +21,13 @@ export class Carrinho {
     this.precoTotal = this.precoTotal;
   }
 
+  calcularValorTotal () {
+    let precoTotal = 0;
+    for(let item of this.itens) {
+      precoTotal += item.precoTotal;
+    }
+    this.precoTotal = precoTotal;
+  }
+
+
 }
