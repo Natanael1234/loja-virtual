@@ -1,1 +1,9 @@
-<p>produtos works!</p>
+
+<div class="content">
+  <div class="grid" margin>
+    <div class="grid-item" *ngFor="let produto of produtos" padding>
+      <card-galeria [produto]="produto"></card-galeria>
+    </div>
+  </div>
+</div>
+

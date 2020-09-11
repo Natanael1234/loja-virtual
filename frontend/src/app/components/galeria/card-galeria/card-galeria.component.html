@@ -1,1 +1,8 @@
-<p>card-galeria works!</p>
+<mat-card  class="card-produto" [routerLink]="['/produto', produto.id]">
+  <img mat-card-image [src]="produto.thumbnail"/>
+  <mat-card-content>
+    <h2>{{produto.nome}}</h2>
+    <h3>{{produto.preco | brl }}</h3>
+    {{produto.descricao}}
+  </mat-card-content>
+</mat-card>
