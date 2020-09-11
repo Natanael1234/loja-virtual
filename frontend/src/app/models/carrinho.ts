@@ -4,6 +4,7 @@ import { Produto } from './produto';
 export class Carrinho {
 
   itens: ItemCarrinho[] = [];
+  quantidadeTotal = 0;
   precoTotal: number = 0;
   formaPagamento: number;
 
@@ -28,6 +29,7 @@ export class Carrinho {
     } else {
       item.mudaQuantidade(quantidade);
     }
+    this.calcularQuantidadeTotal();
     this.calcularValorTotal();
   }
 
@@ -39,6 +41,7 @@ export class Carrinho {
     if (produtoId) throw new Error('Produto indefinido');
     let idx = this.getItemIndexPorProdutoId(produtoId);
     this.itens.splice(idx, 1);
+    this.calcularQuantidadeTotal();
     this.calcularValorTotal();
     return idx > -1;
   }
@@ -65,12 +68,26 @@ export class Carrinho {
     });
   }
 
-  calcularValorTotal () {
+  /**
+   * Calcular o valor total no carrinho.
+   */
+  async calcularValorTotal () {
     let precoTotal = 0;
     for(let item of this.itens) {
       precoTotal += item.precoTotal;
     }
     this.precoTotal = precoTotal;
+  }
+
+  /**
+   * Calcular a quantidade total de produtos de todos os itens no carrinho.
+   */
+  async calcularQuantidadeTotal () {
+    let quantidadeTotal = 0;
+    for(let item of this.itens) {
+      quantidadeTotal += item.quantidade;
+    }
+    this.quantidadeTotal = quantidadeTotal;
   }
 
 }
