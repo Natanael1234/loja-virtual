@@ -1,5 +1,9 @@
 <mat-toolbar color="primary">
   <span>Loja Online</span>
+  <span class="toolbar-spacer"></span>
+  <button mat-icon-button [routerLink]="['carrinho']">
+    <mat-icon class="toolbar-icon"  [matBadge]="carrinhoService?.carrinho?.quantidadeTotal || null"  matBadgeColor="warn" matBadgeSize="small">shopping_cart</mat-icon>
+  </button>
 </mat-toolbar>
 
 <router-outlet></router-outlet>
