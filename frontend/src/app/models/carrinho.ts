@@ -8,6 +8,13 @@ export class Carrinho {
   formaPagamento: number;
 
   /**
+   * Remove todos os itens do carrinho.
+   */
+  esvaziarCarrinho () {
+    this.itens = [];
+  }
+
+  /**
    * Adciona um produto no carrinho.
    * @param produto produto a ser adicionado.
    * @param quantidade quantidade do produto a ser adicionada.
