@@ -4,6 +4,7 @@ import { BrlPipeModule } from 'src/app/pipes/brl/brl.module';
 import { MatCardModule } from '@angular/material/card';
 import { CardGaleriaComponent } from './card-galeria.component';
 import { RouterModule } from '@angular/router';
+import { AssetsDirPipeModule } from 'src/app/pipes/assets-dir/asstes-dir.module';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     MatCardModule,
     BrlPipeModule,
-    RouterModule
+    RouterModule,
+    AssetsDirPipeModule
   ],
   exports: [
     CardGaleriaComponent

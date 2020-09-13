@@ -1,5 +1,5 @@
 <mat-card  class="card-produto" [routerLink]="['/produto', produto.id]" >
-  <img class="mat-card-image" mat-card-image [src]="'http://localhost:3003/'+produto.thumbnail"/>
+  <img class="mat-card-image" mat-card-image [src]="produto.thumbnail|assetsDir"/>
   <mat-card-content>
     <p class="preco-produto" [title]="produto.preco | brl">{{produto.preco | brl }}</p>
     <p class="nome-produto" [title]="produto.nome">{{produto.nome}}</p>
