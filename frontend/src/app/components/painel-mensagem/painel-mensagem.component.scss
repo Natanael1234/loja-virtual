@@ -1,0 +1,11 @@
+.painel-mensagem {
+  display: grid;
+  grid-template-columns: 1;
+  justify-items: center;
+  align-items: center;
+  align-content: center;
+
+  top:0;bottom: 0;
+  // background-color: yellowgreen;
+  height: calc(100% - 64px);
+}

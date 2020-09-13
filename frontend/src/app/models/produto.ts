@@ -4,8 +4,9 @@ export class Produto {
   nome: string;
   thumbnail: string;
   preco: number = 0;
-  imagensUrls: string[];
+  imagens: string[];
   descricao: string;
+  quantidadeEstoque:number = 0;
 
   constructor(dadosProduto?: any) {
     if (dadosProduto) {
@@ -19,7 +20,8 @@ export class Produto {
     this.thumbnail = dadosProduto.thumbnail;
     this.preco = dadosProduto.preco || 0;
     this.descricao = dadosProduto.descricao;
-    this.imagensUrls = dadosProduto.imagensUrls;
+    this.imagens = dadosProduto.imagens;
+    this.quantidadeEstoque = dadosProduto.quantidadeEstoque;
   }
 
 }

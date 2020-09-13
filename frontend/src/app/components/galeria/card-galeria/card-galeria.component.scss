@@ -1,3 +1,22 @@
 .card-produto {
   cursor: pointer;
 }
+
+
+.preco-produto {
+  font-size: 24px;
+  font-weight: 600;
+}
+
+.nome-produto {
+  height: 100px;
+  width: 80%;
+  // white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  text-overflow: ellipsis;
+  // border: 1px solid #ddd;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 300;
+}

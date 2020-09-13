@@ -1,1 +1,75 @@
 
+<div
+  margin
+  *ngIf="!erro && !carregando && produto"
+  class="container">
+
+  <div class="content-wrapper">
+
+    <div margin-v>
+      <button
+        mat-button
+        fill-width
+          (click)="voltar()">
+        <mat-icon>arrow_backward</mat-icon> Voltar
+      </button>
+    </div>
+
+    <mat-card class="card-produto">
+
+      <div class="galeria-produto" padding>
+        <button
+          mat-icon-button
+          mat-mini-fab
+          aria-label="Imagem anterior"
+          class="botao-carrosel voltar"
+          color="accent"
+          (click)="selecionarImagem(-1)">
+          <mat-icon>arrow_backward</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          mat-mini-fab
+          aria-label="Próxima imagem"
+          class="botao-carrosel avancar"
+          color="accent"
+          (click)="selecionarImagem(1)">
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+        <div  class="image-wrapper">
+          <img class="imagem-selecionada"  [src]="imagemSelecionada | assetsDir"/>
+        </div>
+
+      </div>
+
+      <div class="dados-produto">
+
+        <div *ngIf="!erro && !carregando ">
+          <div padding-v class="nome-produto">{{ produto?.nome }}</div>
+          <div padding-v class="codigo-produto">Cód. #{{ produto?.id }}</div>
+          <div padding-v class="preco-produto">{{ produto?.preco | brl }}</div>
+          <div padding-v class="esqoque-produto">Estoque: {{ produto?.quantidadeEstoque }}</div>
+          <div padding-v class="descricao-produto">
+            {{ produto?.descricao }}
+          </div>
+          <button
+            mat-flat-button
+            (click)="comprar()"
+            color="accent"
+            class="botao-comprar"
+            [disabled]="!produto?.quantidadeEstoque"
+          >
+            {{ produto?.quantidadeEstoque ? "Comprar" : "Produto indisponível" }}
+          </button>
+          <h3 *ngIf="erro && !carregando">{{ erro }}</h3>
+          <div *ngIf="carregando">Carregando...</div>
+        </div>
+
+      </div>
+
+    </mat-card>
+
+  </div>
+</div>
+
+

@@ -1,0 +1,114 @@
+
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  @media only screen and (min-width: 800px) {
+    grid-template-columns: 1fr 4fr 1fr;
+    .content-wrapper { grid-column: 2; }
+  }
+  @media only screen and (min-width: 1200px) {
+    grid-template-columns: 1fr 3fr 1fr;
+    .content-wrapper { grid-column: 2; }
+  }
+}
+
+
+.card-produto {
+  // background-color: crimson;
+  display: grid;
+  grid-template-columns: 1fr;
+  // grid-template-rows: 2fr;
+  grid-gap: .5rem;
+}
+
+@media only screen and (min-width: 600px) {
+  .card-produto {
+    // background-color: crimson;
+
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+  }
+}
+
+@media only screen and (min-width: 1000px) {
+  .card-produto {
+    // background-color: crimson;
+
+    grid-template-columns: 2fr 1fr;
+
+  }
+}
+
+.galeria-produto {
+  position: relative;
+  justify-items: center;
+  align-items: center;
+  // background-color: darkcyan;
+}
+
+.image-wrapper {
+  // background-color: rebeccapurple;
+  // border: 1px solid fuchsia;
+  display: grid;
+  justify-items: center;
+  align-items: center;
+  height: 100%;
+}
+
+.imagem-selecionada {
+  // border: 1px solid cyan;
+  width: 70%;
+  margin-left: 8px;
+}
+
+.botao-carrosel.voltar {
+  position: absolute;
+  top: calc(50% - 24px);
+  left: 8px;
+}
+
+.botao-carrosel.avancar {
+  position: absolute;
+  top: calc(50% - 24px);
+  right: 8px;
+}
+
+.galeria-produto {
+  // background-color: cadetblue;
+}
+
+.dados-produto {
+  // background-color: yellowgreen;
+}
+
+.nome-produto {
+  font-size: 22px;
+  font-weight: 400;
+}
+
+.codigo-produto {
+  font-size: 16px;
+  font-weight: 100;
+}
+
+.preco-produto {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.estoque-produto {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.descricao-produto {
+  font-size: 16px;
+  font-weight: 300;
+
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.botao-comprar {
+  width: 100%;
+}

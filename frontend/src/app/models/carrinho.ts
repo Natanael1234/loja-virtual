@@ -8,29 +8,57 @@ export class Carrinho {
   precoTotal: number = 0;
   formaPagamento: number;
 
+
+  comprar () {
+    this.esvaziarCarrinho();
+  }
+
   /**
    * Remove todos os itens do carrinho.
    */
   esvaziarCarrinho () {
     this.itens = [];
+    this.calcularTotais();
   }
 
   /**
-   * Adciona um produto no carrinho.
-   * @param produto produto a ser adicionado.
-   * @param quantidade quantidade do produto a ser adicionada.
+   *
+   * @param item muda a quantidade de um item no carrinho.
+   * @param quantidade quantidade.
    */
-  adicionarItem (produto:Produto, quantidade: number) {
+  setQuantidade (item: ItemCarrinho, quantidade:number) {
+    item.definirQuantidade(quantidade);
+    this.calcularTotais();
+  }
+
+  setItem (produto:Produto, quantidade:number) {
     if (!produto?.id) throw new Error('Produto indefinido');
     let item = this.getItemPorProdutoId(produto.id);
     if (!item) {
       item = new ItemCarrinho(produto, quantidade);
       this.itens.push(item);
     } else {
-      item.mudaQuantidade(quantidade);
+      item.setProduto(produto);
+      item.definirQuantidade(quantidade);
     }
-    this.calcularQuantidadeTotal();
-    this.calcularValorTotal();
+    this.calcularTotais();
+  }
+
+  /**
+   * Adiciona um produto no carrinho.
+   * @param produto produto a ser adicionado.
+   * @param quantidade quantidade do produto a ser adicionada.
+   */
+  adicionarProduto (produto:Produto) {
+    if (!produto?.id) throw new Error('Produto indefinido');
+    let item = this.getItemPorProdutoId(produto.id);
+    if (!item) {
+      item = new ItemCarrinho(produto, 1);
+      this.itens.push(item);
+    } else {
+      item.incrementarQuantidade(1);
+    }
+    this.calcularTotais();
   }
 
   /**
@@ -41,8 +69,7 @@ export class Carrinho {
     if (produtoId) throw new Error('Produto indefinido');
     let idx = this.getItemIndexPorProdutoId(produtoId);
     this.itens.splice(idx, 1);
-    this.calcularQuantidadeTotal();
-    this.calcularValorTotal();
+    this.calcularTotais();
     return idx > -1;
   }
 
@@ -69,6 +96,14 @@ export class Carrinho {
   }
 
   /**
+   * Calcula quantidade e valor totais.
+   */
+  async calcularTotais() {
+    this.calcularQuantidadeTotal();
+    this.calcularValorTotal();
+  }
+
+  /**
    * Calcular o valor total no carrinho.
    */
   async calcularValorTotal () {
@@ -89,5 +124,6 @@ export class Carrinho {
     }
     this.quantidadeTotal = quantidadeTotal;
   }
+
 
 }

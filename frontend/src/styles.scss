@@ -8,3 +8,11 @@ body {
 
 
 @import "./global-syles/utils.scss";
+@import './global-syles/custom-angular-material-theme.scss';
+.mat-card-image{
+  margin-left: 0px!important;
+  margin-top: 0px!important;
+  width: 100%!important
+  ;
+}
+

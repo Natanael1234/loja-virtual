@@ -1,1 +1,87 @@
-<p>carrinho works!</p>
+<div
+  margin
+  *ngIf="!erro && !carregando && carrinhoService.carrinho?.itens?.length && !concluido"
+  class="container"
+>
+
+  <div class="content-wrapper">
+
+    <div margin-v>
+      <button
+        mat-button
+        fill-width
+          (click)="voltar()">
+        <mat-icon>arrow_backward</mat-icon> Voltar
+      </button>
+    </div>
+
+    <mat-card>
+
+      <div class="lista">
+        <div class="item-carrinho" *ngFor="let item of carrinhoService.carrinho.itens">
+
+          <div class="quantidade-produto">
+            <button
+              text="Remover uma unidade do produto"
+              class="botao-item botao-remover"
+              mat-icon-button
+              (click)="adicionarQuantidade(item, -1)">
+              <mat-icon>remove</mat-icon>
+            </button>
+
+            <div text="Quantidade" class="rotulo-quantidade-produto">{{ item.quantidade }}</div>
+
+            <button
+              text="Adicionar uma unidade do produto"
+              class="botao-item botao-aumentar"
+              mat-icon-button
+              (click)="adicionarQuantidade(item, 1)">
+              <mat-icon>add</mat-icon>
+            </button>
+          </div>
+
+          <div class="nome-produto" text="Nome do produto">{{ item?.produto?.nome || "Nome indisponível" }}</div>
+
+          <div class="remover-produto">
+            <button
+              text="Remover item do carrinho"
+              class="botao-item botao-remover"
+              mat-icon-button
+              (click)="removerItem(item)">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+
+
+        </div>
+      </div>
+    </mat-card>
+
+    <div margin-v>
+      <button
+        mat-flat-button
+        fill-w
+        color="accent"
+        (click)="comprar()"
+        [disabled]="!carrinhoService.carrinho?.itens?.length">
+        <mat-icon>shopping_cart</mat-icon> Concluir a compra
+      </button>
+    </div>
+
+  </div>
+
+</div>
+
+<painel-mensagem
+  *ngIf="!concluido && !carregando && (erro||!carrinhoService.carrinho?.itens?.length)"
+  [texto]="!carrinhoService.carrinho?.itens?.length ? 'O carrinho não possui ítens.' : erro"
+  [link]="['/produtos']"
+  textoLink="Voltar para a loja">
+</painel-mensagem>
+
+<painel-mensagem
+  *ngIf="concluido && !erro && !carregando"
+  texto="Compra efetuada com sucesso."
+  [link]="['/produtos']"
+  textoLink="Voltar para a loja">
+</painel-mensagem>
