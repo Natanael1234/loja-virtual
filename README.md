@@ -9,4 +9,3 @@ Para testar siga as seguintes instruções.
 - Para executar o servidor do backend abra um terminal na pasta 'backend' e digite 'node servidor.js'. O servidor de backend rodará no endereço localhosts:3003.
 - Para executar o servidor do frontend abra um terminal na pasta 'frontend' e digite 'ng serve --open'. O PWA abrirá no navegador com o endereço 'localhost:4200'.
 - Não é necessário nenhuma configuração adicional. A aplicação se utiliza de um banco de dados SQLite que já acompanha o backend.
-
