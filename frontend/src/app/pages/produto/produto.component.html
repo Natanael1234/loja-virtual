@@ -57,8 +57,7 @@
             (click)="comprar()"
             color="accent"
             class="botao-comprar"
-            [disabled]="!produto?.quantidadeEstoque"
-          >
+            [disabled]="!produto?.quantidadeEstoque">
             {{ produto?.quantidadeEstoque ? "Comprar" : "Produto indisponível" }}
           </button>
           <h3 *ngIf="erro && !carregando">{{ erro }}</h3>

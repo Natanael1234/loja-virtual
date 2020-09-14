@@ -5,6 +5,7 @@ var cors = require('cors');
 const app = new express();
 const bodyParser = require('body-parser');
 const db = require('./bancoDeDados');
+const mySQLiteDB = require('./models');
 // app.use(bodyParser. urlencoded({ extended: true }));
 app.use(cors());
 app.use(bodyParser.json());
@@ -13,7 +14,7 @@ app.use(express.static('public'));
 
 app.get('/produtos', async (req, res, next)=>{    
     try {
-        let produtos = await db.getProdutos();
+        let produtos = await db.getProdutos();        
         res.send(produtos);
     } catch (error) {        
         res.status(400).send({ message: error.message });        

@@ -32,7 +32,9 @@ export class Carrinho {
   }
 
   setItem (produto:Produto, quantidade:number) {
-    if (!produto?.id) throw new Error('Produto indefinido');
+    if (!produto?.id) {
+      throw new Error('Produto indefinido');
+    }
     let item = this.getItemPorProdutoId(produto.id);
     if (!item) {
       item = new ItemCarrinho(produto, quantidade);

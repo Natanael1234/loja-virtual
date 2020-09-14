@@ -46,30 +46,32 @@ function geraProdutos (gerarIds) {
       
       // gera dados adicionais.
       let seedData = data.map((produto, index)=>{
+        let imagens = [];
+        for(let i = 1; i <= 4; i++) {
+          imagens.push('imgs/produtos/' + produto.folder + '/' + i + '.jpg')
+        }
         let descricao = lorem.generateParagraphs(1);
         let thumbnail = 'imgs/produtos/' + produto.folder + '/' + '1.jpg';
         let quantidadeEstoque = Math.round(Math.random() * 100);
         let preco = Math.round(Math.random() * 1000000) / 100;
         let dadosProduto = {
+            id: gerarIds ? sequence.id : undefined,
             nome: produto.nome,
             cod: index + 1,
             descricao,
             preco,
             thumbnail,
+            imagens:JSON.stringify(imagens),
             quantidadeEstoque,
-            imagens: [],
-            createdAt: new Date().toDateString(),
-            updatedAt: new Date().toDateString()
+            createdAt: new Date(),
+            updatedAt: new Date()
         };
-        for(let i = 1; i <= 4; i++) {
-          dadosProduto.imagens.push('imgs/produtos/' + produto.folder + '/' + i + '.jpg')
-        }
-        if (gerarIds) {
-            dadosProduto.id = sequence.id;
-        }
+
         return dadosProduto;
       });
-    return seedData;
+    
+      // console.log('SEED DATA', JSON.stringify(seedData[0],null,4))
+      return seedData;
 }
 
 module.exports = geraProdutos

@@ -17,7 +17,7 @@ module.exports = {
 
     /** POPULA A TABELA DE PRODUTOS */
 
-    let seedData = geradorDeProdutos();
+    let seedData = geradorDeProdutos(false);
     // simula produto sem estoque.
     seedData[1].quantidadeEstoque = 0;
     await queryInterface.bulkInsert('Produtos', seedData, {});

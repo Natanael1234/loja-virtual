@@ -24,7 +24,6 @@
 @media only screen and (min-width: 600px) {
   .card-produto {
     // background-color: crimson;
-
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
   }
@@ -33,9 +32,7 @@
 @media only screen and (min-width: 1000px) {
   .card-produto {
     // background-color: crimson;
-
     grid-template-columns: 2fr 1fr;
-
   }
 }
 
@@ -57,7 +54,7 @@
 
 .imagem-selecionada {
   // border: 1px solid cyan;
-  width: 70%;
+  width: 90%;
   margin-left: 8px;
 }
 

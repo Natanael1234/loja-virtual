@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Carrinho.hasMany(models.ItemCarrinho, {as:'itens'});      
     }
   };
   Carrinho.init({

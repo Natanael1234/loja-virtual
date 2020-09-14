@@ -45,11 +45,11 @@ export class ProdutoComponent implements OnInit {
     this.carregando == true;
     if (!this.produto) return;
     try {
-      this.carrinhoService.adicionarProduto(this.produto.id, 1);
+      await this.carrinhoService.adicionarProduto(this.produto.id, 1);
       this.carregando = false;
       this.router.navigate(['/carrinho']);
     } catch (error) {
-      let msg = error?.error?.message || 'Falha ao esvaziar carrinho.';
+      let msg = error?.error?.message || 'Falha ao comprar.';
       this.erro = msg;
       this.mostrarMensagem(msg);
     }

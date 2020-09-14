@@ -22,6 +22,9 @@ module.exports = {
       },
       thumbnail: {
         type: Sequelize.STRING
+      },      
+      imagens: {
+        type: Sequelize.STRING
       },
       quantidadeEstoque: {
         type: Sequelize.INTEGER

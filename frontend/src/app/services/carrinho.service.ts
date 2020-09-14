@@ -39,7 +39,7 @@ export class CarrinhoService {
   }
 
   async comprar () {
-    let dadosCarrinho = await this.api.delete('comprar');
+    let dadosCarrinho = await this.api.get('comprar');
     this.setCarrinho(dadosCarrinho);
     return this.carrinho;
   }
